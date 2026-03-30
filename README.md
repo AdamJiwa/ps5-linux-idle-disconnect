@@ -8,20 +8,12 @@ my controller is 132
 
 setup
 
-/dev/inputs are manually specified to check yours
-```
-udevadm info -a -n /dev/input/eventXX
-```
-replace event22 and event23 with your event Id's for 
 "DualSense Wireles Controller" and "DualSense Wireless Controller Touchpad"
 unused gyro is "DualSense Wireless Controller Motion Sensors"
 
-update mac address of controller in controllerIdle.py
-if its already paired
-```
-bluetoothctl devices
-```
-to find mac address
+"Wireless Controller" and "Wireless Controller Touchpad"
+unused gyro is "Wireless Controller Motion Sensors"
+for ps4 DualShock
 
 ```
 chmod +x controllerIdle.py
@@ -29,7 +21,10 @@ chmod +x controllerIdle.py
 
 add the udev rule replaceing <location> with this projects location e.g. /etc/udev/rules.d/90-myrules.d
 ```
-ACTION=="add", SUBSYSTEMS=="input", ATTRS{name}=="DualSense Wireless Controller Motion Sensors", RUN+="<location>/idle_controller/controllerIdle.py"
+# ps5 DualSense
+ACTION=="add", SUBSYSTEMS=="input", ATTRS{name}=="DualSense Wireless Controller", RUN+="<location>/idle_controller/controllerIdle.py"
+# ps4 DualShock
+ACTION=="add", SUBSYSTEMS=="input", ATTRS{name}=="Wireless Controller", RUN+="<location>/idle_controller/controllerIdle.py"
 ```
 
 reload udev rules
