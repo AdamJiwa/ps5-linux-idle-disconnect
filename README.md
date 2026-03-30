@@ -2,7 +2,8 @@ Script for turning off ps5 controller when Idle
 
 this ignores the gyro as I don't use it
 
-acounts for stick drift by 4 in either direction of 127.5
+acounts for stick drift by 8 in either direction of 127.5, highest I've seen on
+my controller is 132
 
 
 setup
@@ -12,7 +13,8 @@ setup
 udevadm info -a -n /dev/input/eventXX
 ```
 replace event22 and event23 with your event Id's for 
-"DualSense Wireles Controller" and "DualSense Wireless Controller Motion Sensors"
+"DualSense Wireles Controller" and "DualSense Wireless Controller Touchpad"
+unused gyro is "DualSense Wireless Controller Motion Sensors"
 
 update mac address of controller in controllerIdle.py
 if its already paired
